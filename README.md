@@ -1,0 +1,1 @@
+lokijs-promise
