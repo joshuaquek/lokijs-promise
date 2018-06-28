@@ -39,7 +39,7 @@ let getCollection = (collectionName) => {
   return new Promise(async (resolve, reject) => {
     try {
       let database = await getDB()
-      let collection = database.getCollection(collectionName) ? database.getCollection(collectionName) : database.addCollection(collectionName)
+      let collection = database.getCollection(collectionName) ? database.getCollection(collectionName) : database.addCollection(collectionName, {clone: true}) // Creates a new DB with `clone = true` so that db records cannot be directly modified from the result-set.
       resolve(collection) // This returns a Promise since this entire function is declared with the async keyword
     } catch (error) {
       reject(error)

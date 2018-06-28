@@ -1,9 +1,13 @@
-const { getCollection, initDB, getDB } = require('../index.js')
+const {
+  getCollection,
+  initDB,
+  getDB
+} = require('../index.js')
 
 // Always run this at the start of your app to instantiate the DB
 initDB('v1.json', 1000)
 
-async function someAsyncFunctionAnywhereInYourCode () {
+async function someAsyncFunctionAnywhereInYourCode() {
 
   // Get Insect Collections if exists, if not, it will create one in the DB
   let insects = await getCollection('insects')
@@ -14,10 +18,11 @@ async function someAsyncFunctionAnywhereInYourCode () {
   console.log(results_1)
 
   // Insert in a new record
-  insects.insert({
+  let data = {
     'insect_name': 'Dragonfly',
     'insect_description': 'A very nice looking insect.'
-  })
+  }
+  insects.insert(data)
 
   // Query for results
   console.log("\n\n\nQuerying after DB Insertion...\n\n");
