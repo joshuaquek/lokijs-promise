@@ -19,7 +19,7 @@ Full Example:
 const { getCollection, initDB, getDB } = require('lokijs-promise')
 
 // Always run this at the start/top of your app to instantiate the DB
-initDB('v1.json', 1000)
+initDB('v1.json', 1000) // A file called v1.json will be created in your project repo and will be used as the DB, and it will have an autosave interval of 1000ms (1 second, essentially)
 
 async function someAsyncFunctionAnywhereInYourCode () {
 
