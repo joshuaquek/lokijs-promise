@@ -1,5 +1,6 @@
 const Loki = require('lokijs')
 const Lfsa = require('lokijs/src/loki-fs-structured-adapter')
+const Promise = require('bluebird')
 
 let isLoaded = false
 let db = null
@@ -46,8 +47,6 @@ let getCollection = (collectionName) => {
     }
   })
 }
-
-
 
 module.exports = {
   getDB: getDB,
