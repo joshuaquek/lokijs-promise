@@ -7,15 +7,14 @@ const {
 // Always run this at the start of your app to instantiate the DB
 initDB('v1.json', 1000)
 
-async function someAsyncFunctionAnywhereInYourCode() {
-
+async function someAsyncFunctionAnywhereInYourCode () {
   // Get Insect Collections if exists, if not, it will create one in the DB
   let insects = await getCollection('insects')
 
   // Query for results
-  console.log("\n\n\nQuerying for Existing Records...\n\n");
-  let results_1 = insects.find({})
-  console.log(results_1)
+  console.log('\n\n\nQuerying for Existing Records...\n\n')
+  let results1 = insects.find({})
+  console.log(results1)
 
   // Insert in a new record
   let data = {
@@ -25,14 +24,14 @@ async function someAsyncFunctionAnywhereInYourCode() {
   insects.insert(data)
 
   // Query for results
-  console.log("\n\n\nQuerying after DB Insertion...\n\n");
-  let results_2 = insects.find({})
-  console.log(results_2)
+  console.log('\n\n\nQuerying after DB Insertion...\n\n')
+  let results2 = insects.find({})
+  console.log(results2)
 
   // Do whatever LokiJS stuff etc
   let db = await getDB()
-  //....
-  //....
+  // ....
+  // ....
 }
 
 someAsyncFunctionAnywhereInYourCode()

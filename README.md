@@ -46,9 +46,23 @@ async function someAsyncFunctionAnywhereInYourCode () {
   let db = await getDB()
   //....
   //....
+  // Examples on how to use `db` found here in the LokiJs documentation: https://rawgit.com/techfort/LokiJS/master/jsdoc/index.html
 }
 
 someAsyncFunctionAnywhereInYourCode()
+```
+
+## Using Your Own Promise Library
+
+The default Promise library used here would be Bluebird, as it faster for older versions of Node. 
+
+Note that in later versions of Node, native Promises are the fastest. Another extremely performant Promise library you could try is Aigle ( https://github.com/suguru03/aigle ), which is faster than Bluebird in this benchmark: https://github.com/suguru03/aigle/tree/master/benchmark
+
+Either way, you can override the Bluebird promise library this way, anywhere in your code:
+
+```javascript
+const { setPromiseLibrary } = require('lokijs-promise')
+setPromiseLibrary(global.Promise) // This sets the Promise library used in lokijs-promise to the native NodeJs Promise library
 ```
 
 

@@ -1,9 +1,9 @@
 const Loki = require('lokijs')
 const Lfsa = require('lokijs/src/loki-fs-structured-adapter')
-const Promise = require('bluebird')
 
 let isLoaded = false
 let db = null
+let promiseLibrary = require('bluebird')
 
 let initDB = (dbName, autosaveInterval) => {
   try {
@@ -17,11 +17,12 @@ let initDB = (dbName, autosaveInterval) => {
       autosaveInterval: autosaveInterval || 1000
     })
   } catch (error) {
-    reject(error)
+    throw error
   }
 }
 
-let getDB = () => {
+function getDB () {
+  const Promise = getPromiseLibrary()
   return new Promise((resolve, reject) => {
     try {
       let interval = setInterval(() => {
@@ -36,11 +37,12 @@ let getDB = () => {
   })
 }
 
-let getCollection = (collectionName) => {
+function getCollection (collectionName) {
+  const Promise = getPromiseLibrary()
   return new Promise(async (resolve, reject) => {
     try {
       let database = await getDB()
-      let collection = database.getCollection(collectionName) ? database.getCollection(collectionName) : database.addCollection(collectionName, {clone: true, disableMeta:true}) // Creates a new DB with `clone = true` so that db records cannot be directly modified from the result-set.
+      let collection = database.getCollection(collectionName) ? database.getCollection(collectionName) : database.addCollection(collectionName, { clone: true, disableMeta: true }) // Creates a new DB with `clone = true` so that db records cannot be directly modified from the result-set.
       resolve(collection) // This returns a Promise since this entire function is declared with the async keyword
     } catch (error) {
       reject(error)
@@ -48,8 +50,25 @@ let getCollection = (collectionName) => {
   })
 }
 
+function setPromiseLibrary (promiseLib) {
+  try {
+    promiseLibrary = promiseLib || require('bluebird')
+  } catch (error) {
+    throw error
+  }
+}
+
+function getPromiseLibrary () {
+  try {
+    return promiseLibrary
+  } catch (error) {
+    throw error
+  }
+}
+
 module.exports = {
   getDB: getDB,
   getCollection: getCollection,
-  initDB: initDB
+  initDB: initDB,
+  setPromiseLibrary: setPromiseLibrary
 }

@@ -1,6 +1,6 @@
 {
   "name": "lokijs-promise",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "The native LokiJs does not allow synchronous loading of the persistent json/db store before running commands. Using Promises, this library overcomes this and now allows you to load the persistent json/db store first before running any other command.",
   "main": "index.js",
   "engines": {
@@ -10,7 +10,9 @@
     "bluebird": "3.5.1",
     "lokijs": "1.5.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "standard": "^12.0.1"
+  },
   "scripts": {
     "test": "node ./tests/test.js"
   },
