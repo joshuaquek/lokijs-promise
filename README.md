@@ -64,7 +64,9 @@ Either way, you can override the Bluebird promise library this way, anywhere in 
 
 ```javascript
 const { setPromiseLibrary } = require('lokijs-promise')
+
 setPromiseLibrary(global.Promise) // This sets the Promise library used in lokijs-promise to the native NodeJs Promise library
+
 ```
 
 
