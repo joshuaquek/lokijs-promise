@@ -2,6 +2,7 @@
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/joshuaquek/lokijs-promise/graphs/commit-activity)
+[![GitHub issues-closed](https://img.shields.io/github/issues-closed/joshuaquek/lokijs-promise.svg)](https://GitHub.com/joshuaquek/lokijs-promise/issues?q=is%3Aissue+is%3Aclosed)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 The native LokiJs does not allow synchronous loading of the persistent json/db store before running commands. 
